@@ -21,7 +21,7 @@ storiesOf('User Item', module)
     };
     const user = {
       display_name: "Jon Skeet",
-      reputation: "123",
+      reputation: "123454566",
       badge_counts: budge,
       profile_image: "https://www.gravatar.com/avatar/89927e2f4bde24991649b353a37678b9?s=128&d=identicon&r=PG"
     };

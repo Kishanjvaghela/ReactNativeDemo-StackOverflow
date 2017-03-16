@@ -45,7 +45,7 @@ export default class ListItem extends Component {
                 fontWeight: 'bold',
                 marginRight: 10
               }}>
-                { reputation }
+                { this.convertRaputation(reputation) }
               </Text>
               <CircleSvg
                 color="#F8C501"/>
@@ -66,6 +66,16 @@ export default class ListItem extends Component {
           </View>
         </View>
     );
+  }
+
+  convertRaputation(reputation) {
+    if(reputation<1000){
+      return reputation;
+    } else if (reputation < 10000) {
+      return reputation.chatAt(0) + "," + reputation.substr(1);
+    }else {
+      return (Math.round((reputation / 1000) * 10) / 10) + "k";
+    }
   }
 }
 
