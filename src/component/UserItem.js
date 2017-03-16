@@ -71,8 +71,9 @@ export default class ListItem extends Component {
   convertRaputation(reputation) {
     if(reputation<1000){
       return reputation;
-    } else if (reputation < 10000) {
-      return reputation.chatAt(0) + "," + reputation.substr(1);
+    } else if (reputation < 10000) {      
+      return String(reputation).charAt(0) + "," + String(reputation).substr(1);
+      // return reputation +"TT";
     }else {
       return (Math.round((reputation / 1000) * 10) / 10) + "k";
     }
