@@ -7,15 +7,16 @@ import Button from './Button';
 import CenterView from './CenterView';
 import Welcome from './Welcome';
 import UserItem from '../../src/component/UserItem';
+import UserList from '../../src/component/UserList';
 
 storiesOf('Welcome', module)
   .add('to Storybook', () => (
     <Welcome showApp={linkTo('Button')}/>
   ));
 
-storiesOf('User Item', module)
+storiesOf('Users', module)
   .addDecorator(withKnobs)
-  .add('dummy text', () => {
+  .add('Single Item', () => {
     const budge = {
       bronze: number('bronze', 10),
       silver: number('silver', 20),
@@ -33,6 +34,26 @@ storiesOf('User Item', module)
         data={user}
         />
     )
+  })
+  .add('List', () => {
+      const budge = {
+        bronze: 10,
+        silver: 20,
+        gold:  30
+      };
+      const user = {
+        display_name: "Kishan",
+        reputation: 1233,
+        badge_counts: budge,
+        profile_image: "https://www.gravatar.com/avatar/89927e2f4bde24991649b353a37678b9?s=128&d=identicon&r=PG"
+      };
+
+      let array = [];
+      const totalCount = number('Total',5);
+      for(let i=0;i<totalCount; i++){
+        array.push(user);
+      }
+    return ( <UserList userItems = {array}/>)
   });
 
 storiesOf('Button', module)

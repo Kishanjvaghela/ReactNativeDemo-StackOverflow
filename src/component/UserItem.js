@@ -11,8 +11,7 @@ export default class ListItem extends Component {
         <View style= {{
           flex:1,
           padding:10,
-          marginTop:48,
-          flexDirection: 'row'
+          flexDirection: 'row',
         }}>
           <Image
             style={{
@@ -71,7 +70,7 @@ export default class ListItem extends Component {
   convertRaputation(reputation) {
     if(reputation<1000){
       return reputation;
-    } else if (reputation < 10000) {      
+    } else if (reputation < 10000) {
       return String(reputation).charAt(0) + "," + String(reputation).substr(1);
       // return reputation +"TT";
     }else {
