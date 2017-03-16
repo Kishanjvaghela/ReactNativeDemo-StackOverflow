@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "@kadira/react-native-storybook": "^2.0.0",
+    "@kadira/storybook-addon-knobs": "^1.7.1",
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
     "flow-bin": "^0.41.0",
