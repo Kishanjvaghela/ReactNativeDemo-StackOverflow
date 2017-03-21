@@ -1,8 +1,34 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { TouchableHighlight, View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { fetchData } from './actions/actions';
+import UserList from './component/UserList';
 
-export default class App extends Component {
+class App extends Component {
+
+  componentWillMount() {
+    this.props.fetchData();
+  }
+
   render() {
-    return <Text> Hello, world </Text>
+    return (
+      <View>
+      {
+        this.props.appData.isFetching && <Text>Loading</Text>
+      }
+      {
+        this.props.appData.data.length ? (
+           <UserList userItems = {this.props.appData.data}/>
+        ) : null
+      }
+</View>
+    )
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    appData: state.appData
+  }
+};
+export default connect(mapStateToProps,{fetchData})(App);
