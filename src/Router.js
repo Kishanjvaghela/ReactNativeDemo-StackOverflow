@@ -2,6 +2,7 @@ import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import SplashScreen from './screens/SplashScreen';
 import UserListScreen from './screens/UserListScreen';
+import UserDetailScreen from './screens/UserDetailScreen';
 
 const RouterComponent = () => {
   return (
@@ -15,10 +16,15 @@ const RouterComponent = () => {
       </Scene>
       <Scene key="main">
         <Scene
-          key="User list"
+          key="user_list"
           component={UserListScreen}
           title="User List"
           initial
+        />
+        <Scene
+          key="user_detail"
+          component={UserDetailScreen}
+          title="User Detail"
         />
       </Scene>
     </Router>

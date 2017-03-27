@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableHighlight } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import CircleSvg from './common/CircleSvg';
 
 export default class ListItem extends Component {
-
+  _onRowClicked() {
+    Actions.user_detail();
+  }
   render() {
     const { display_name, reputation, badge_counts, profile_image } = this.props.data;
 
     return (
+      <TouchableHighlight
+        onPress={this._onRowClicked}>
         <View style= {{
           flex:1,
           padding:10,
@@ -64,6 +69,7 @@ export default class ListItem extends Component {
           </View>
           </View>
         </View>
+      </TouchableHighlight>
     );
   }
 
