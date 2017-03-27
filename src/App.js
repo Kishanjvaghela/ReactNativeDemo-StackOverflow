@@ -1,34 +1,16 @@
 import React, { Component } from 'react';
-import { TouchableHighlight, View, Text } from 'react-native';
-import { connect } from 'react-redux';
-import { fetchData } from './actions/actions';
-import UserList from './component/UserList';
+import { Provider } from 'react-redux';
+import configureStore from './configureStore';
+import RouterComponent from './Router';
 
-class App extends Component {
+const store = configureStore();
 
-  componentWillMount() {
-    this.props.fetchData();
-  }
-
+export default class App extends Component {
   render() {
     return (
-      <View>
-      {
-        this.props.appData.isFetching && <Text>Loading</Text>
-      }
-      {
-        this.props.appData.data.length ? (
-           <UserList userItems = {this.props.appData.data}/>
-        ) : null
-      }
-</View>
-    )
+      <Provider store={store}>
+        <RouterComponent />
+      </Provider>
+    );
   }
 }
-
-function mapStateToProps (state) {
-  return {
-    appData: state.appData
-  }
-};
-export default connect(mapStateToProps,{fetchData})(App);
