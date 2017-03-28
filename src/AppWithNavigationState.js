@@ -1,13 +1,7 @@
 import React, { Component }from 'react';
 import { connect } from 'react-redux';
-import { StackNavigator, addNavigationHelpers } from 'react-navigation';
-import UserDetailScreen from './screens/UserDetailScreen';
-
-const AppNavigatorRouter = StackNavigator({
-  Home: {
-    screen: UserDetailScreen,
-   },
-});
+import { addNavigationHelpers } from 'react-navigation';
+import AppNavigatorRouter from './AppNavigatorRouter';
 
 class AppWithNavigationState extends Component {
   render() {
