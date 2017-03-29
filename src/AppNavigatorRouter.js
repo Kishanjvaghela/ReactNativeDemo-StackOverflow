@@ -10,7 +10,7 @@ const AppNavigatorRouter = StackNavigator({
   UserDetail : {
     screen: UserDetailScreen,
   },
-  Home : {    
+  Home : {
     screen: HomeScreen,
   }
 },{
