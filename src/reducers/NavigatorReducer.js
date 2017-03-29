@@ -4,7 +4,7 @@ import AppNavigatorRouter from '../AppNavigatorRouter';
 const initialNavState = {
     index: 0,
     routes: [
-        { key: 'UserDetailScreen', routeName: 'Home' },
+        { key: 'SplashScreen', routeName: 'Splash' },
     ],
 };
 const navReducer = (state = initialNavState, action) => {
