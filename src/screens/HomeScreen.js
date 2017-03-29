@@ -1,8 +1,10 @@
 import React from 'react';
 import { Image, Button,TouchableHighlight } from 'react-native';
 import { DrawerNavigator, StackNavigator } from 'react-navigation';
+import { PRIMARY_DARK, TEXT_WHITE } from '../colors';
 import QuestionListScreen from './QuestionListScreen';
 import UserListScreen from './UserListScreen';
+import TagListScreen from './TagListScreen';
 
 const styles = {
   icon: {
@@ -27,19 +29,24 @@ const DrawerScreen = ({screenName, title, icon }) => {
           ),
         }),
         header: ({ navigate }) => ({
-           left: <TouchableHighlight
-                  style={{
-                    width: 48,
-                    height: 48,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                  onPress={() => navigate('DrawerOpen')}>
-                    <Image
-                      source={require('../icons/ic_arrow_back.png')}
-                      style={styles.icon}
-                    />
-                  </TouchableHighlight>,
+
+           left: (<TouchableHighlight
+                    style={{
+                      width: 48,
+                      height: 48,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                    onPress={() => navigate('DrawerOpen')}>
+                      <Image
+                        source={require('../icons/ic_menu_white.png')}
+                        style={styles.icon}
+                      />
+                 </TouchableHighlight>),
+          style: {
+              backgroundColor: PRIMARY_DARK,
+          },
+          tintColor: TEXT_WHITE,
         })
       },
     }});
@@ -59,7 +66,15 @@ const DrawerRoutes = {
     screen: DrawerScreen({
         screenName: QuestionListScreen,
         title: "Questions",
-        icon: require('../icons/ic_people.png')
+        icon: require('../icons/ic_question.png')
+      })
+	},
+  ThirdViewStack: {
+		name: 'ThirdViewStack',
+    screen: DrawerScreen({
+        screenName: TagListScreen,
+        title: "Tags",
+        icon: require('../icons/ic_local_offer.png')
       })
 	},
 };
