@@ -5,14 +5,16 @@ import CircleSvg from './common/CircleSvg';
 
 export default class ListItem extends Component {
   _onRowClicked() {
-    Actions.user_detail();
+    const { navigate } = this.props.navigation;
+    navigate('UserDetail');
   }
   render() {
     const { display_name, reputation, badge_counts, profile_image } = this.props.data;
 
+
     return (
       <TouchableHighlight
-        onPress={this._onRowClicked}>
+        onPress={this._onRowClicked.bind(this)}>
         <View style= {{
           flex:1,
           padding:10,

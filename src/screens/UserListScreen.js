@@ -35,7 +35,9 @@ class UserListScreen extends Component {
           }
           {
             this.props.appData.data.length ? (
-               <UserList userItems = {this.props.appData.data}/>
+               <UserList
+                  userItems = {this.props.appData.data}
+                  navigation = {this.props.navigation}/>
             ) : null
           }
       </View>
