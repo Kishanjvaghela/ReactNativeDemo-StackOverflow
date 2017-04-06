@@ -1,13 +1,14 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { storiesOf, action, linkTo } from '@kadira/react-native-storybook';
-import { withKnobs, text, boolean, number } from '@kadira/storybook-addon-knobs';
+import { withKnobs, text, boolean, number, date } from '@kadira/storybook-addon-knobs';
 
 import Button from './Button';
 import CenterView from './CenterView';
 import Welcome from './Welcome';
 import UserItem from '../../src/component/UserItem';
 import UserList from '../../src/component/UserList';
+import QuestionItem from '../../src/component/QuestionItem';
 
 storiesOf('Welcome', module)
   .add('to Storybook', () => (
@@ -56,6 +57,32 @@ storiesOf('Users', module)
     return ( <UserList userItems = {array}/>)
   });
 
+storiesOf('Question Story',module)
+  .addDecorator(withKnobs)
+  .add('Single Item', () => {
+    const obj = {
+      "tags": [
+        "c#",
+        "winforms",
+        "sharepoint",
+        "unauthorized"
+      ],
+      "owner": {
+        "display_name": text('Owner', 'Arunoda Susiripala'),
+      },
+      "is_answered": false,
+      "answer_count": number('Answer Count', 10),
+      "score": number('Score', 123),
+      "creation_date": date('Creation', new Date('January 20 2017')),
+      "link": "http://stackoverflow.com/questions/43249841/the-remote-server-returned-an-error-401-unauthorized-using-sharepoint-in-winf",
+      "title": text('Question', 'Question Title')
+    };
+
+
+    return(
+        <QuestionItem   data={obj}/>
+    );
+  });
 storiesOf('Button', module)
   .addDecorator(getStory => (
     <CenterView>{getStory()}</CenterView>
