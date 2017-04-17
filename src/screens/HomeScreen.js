@@ -1,29 +1,35 @@
-import React from 'react';
-import { Image, Button,TouchableHighlight } from 'react-native';
-import { DrawerNavigator, StackNavigator } from 'react-navigation';
+import React, { Component } from 'react';
+import { Image,View, Button,TouchableHighlight, Text } from 'react-native';
+import { DrawerNavigator, StackNavigator, DrawerView } from 'react-navigation';
 import { PRIMARY_DARK, TEXT_WHITE } from '../values/colors';
 import QuestionListScreen from './QuestionListScreen';
 import UserListScreen from './UserListScreen';
 import TagListScreen from './TagListScreen';
 import ImageButton from '../component/common/ImageButton';
 
-const styles = {
-  icon: {
-    width: 24,
-    height: 24,
-  },
-};
+const DrawerItem = (props) => (
+  <View style={{
+    height:48,
+    justifyContent: 'center',
+    paddingLeft: 24
 
-const DrawerItem = ( title, icon ) =>({
-    label: title,
-    icon: ({ tintColor }) => (
-      <Image
-        source={icon}
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    ),
-});
+  }}>
+      <Text style={{
+        color: '#FFFFFF',
+        fontSize: 20,
+      }}> { props.name } </Text>
+  </View>
+);
 
+const CustomDrawerContentComponent = (props) => (
+  <View style={{
+      flex:1,
+      backgroundColor: "#00BBB1",
+    }}>
+    <Text> HEADER </Text>
+    <DrawerView.Items {...props} />
+  </View>
+);
 const DrawerScreen = ({screenName, title, icon }) => {
   return StackNavigator({
         Home1: {
@@ -31,11 +37,11 @@ const DrawerScreen = ({screenName, title, icon }) => {
         }
   },{
     navigationOptions: {
-
       title: title,
-      drawer: DrawerItem(title,icon),
+      drawer: {
+          label: <DrawerItem name={title} />
+      },
       header: ({ navigate }) => ({
-
         // left: MenuButton(navigate),
         left: (<ImageButton
                   source={require('../icons/ic_menu_white.png')}
@@ -75,6 +81,18 @@ const HomeScreen = DrawerNavigator({
           icon: require('../icons/ic_local_offer.png')
         })
   	},
-});
+}, {
+    contentComponent: CustomDrawerContentComponent,
+    contentOptions: {
+      activeBackgroundColor: '#00AEA6',
+      style: {
+        backgroundColor: "#00BBB1",
+      },
+      labelStyle: {
+        color: '#FFFFFF',
+        fontSize: 44,
+      },
+    }
+  });
 
 export default HomeScreen;
